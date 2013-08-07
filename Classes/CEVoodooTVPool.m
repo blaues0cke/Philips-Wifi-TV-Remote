@@ -16,7 +16,7 @@ player_callback( void                   *ctx,
                 const VoodooPlayVersion *version,
                 const char              *address )
 {   
-    if( strcmp(info->name,"PhilipsTV") == 0 ) {
+    if( strcmp(info->name,"PhilipsTV") == 0 || strcmp(info->name,"PHILIPS TV") == 0 ) {
         if ( ![(CEVoodooTVPool *)ctx containsTVWithAddress:address] ){
             NSArray *objects = [NSArray arrayWithObjects:[NSString stringWithUTF8String:info->name],
                                                          [NSString stringWithUTF8String:info->vendor],
