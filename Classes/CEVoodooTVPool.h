@@ -8,14 +8,18 @@
 #import "CEVoodooTV.h"
 #import <directfb.h>
 
-@interface CEVoodooTVPool : NSObject {
+@interface CEVoodooTVPool : NSObject
+{
     VoodooPlayer *player;
     NSMutableDictionary *tvPool;
     NSMutableArray *tvPoolAddresses;
+    
+    BOOL scanningActive;
 }
 
 - (id) init;
 - (void) startScanning;
+- (void) stopScanning;
 - (void) scan;
 - (void) TVFoundWithOptions:(NSDictionary *)dictionary;
 - (void) TVLostWithAddress:(NSString *)ipaddress;

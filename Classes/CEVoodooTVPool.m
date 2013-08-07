@@ -48,7 +48,13 @@ player_callback( void                   *ctx,
 }
 
 - (void) startScanning{
+    scanningActive = YES;
     [NSThread detachNewThreadSelector:@selector(scan) toTarget:self withObject:nil];
+}
+
+- (void)stopScanning
+{
+    scanningActive = NO;
 }
 
 - (void) scan{
@@ -78,7 +84,7 @@ player_callback( void                   *ctx,
         [tvPoolLock unlock];
         [autoreleasepool release];
         voodoo_player_destroy( player );
-    } while (true);
+    } while (scanningActive);
 }
 
 - (void) TVFoundWithOptions:(NSDictionary *)dictionary{
